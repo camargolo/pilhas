@@ -1,0 +1,35 @@
+class Pilha:
+    def __init__(self):
+        self.items = []
+
+    def esta_vazia(self):
+        return self.items == []
+
+    def empilhar(self, item):
+        self.items.append(item)
+
+    def desempilhar(self):
+        return self.items.pop()
+
+    def topo(self):
+        return self.items[-1]
+
+def inverter_string(string):
+    pilha = Pilha()
+    # Empilha cada caractere da string
+    for caractere in string:
+        pilha.empilhar(caractere)
+    
+    # Desempilha os caracteres para obter a string invertida
+    string_invertida = ""
+    while not pilha.esta_vazia():
+        string_invertida += pilha.desempilhar()
+    
+    return string_invertida
+
+# Teste do programa
+strings_teste = ["Olá, mundo!", "12345", "Python é incrível!", "racecar", "stack overflow"]
+for string in strings_teste:
+    print(f"A string original é: {string}")
+    print(f"A string invertida é: {inverter_string(string)}")
+    print()
